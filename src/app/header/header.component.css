@@ -1,3 +1,12 @@
 a {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nav-item {
     color: white;
+}
+
+.nav-item:hover {
+    opacity: 70%;
 }
