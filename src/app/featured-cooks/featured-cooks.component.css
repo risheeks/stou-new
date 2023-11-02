@@ -1,0 +1,22 @@
+.featured-cooks {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+.featured-cooks-list {
+    display: inline-block;
+    padding: 2% 5% 2% 5%;
+}
+
+.featured-cooks-title {
+    text-align: center;
+}
+
+.featured-cook {
+    padding: 0 30px 0 30px;
+}
+
+.featured-cook:hover {
+    opacity: 80%;
+}
