@@ -1,0 +1,7 @@
+.home-component {
+    height: 600px;
+
+    background-image: url('../../assets/images/home-background1.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
