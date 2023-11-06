@@ -3,6 +3,8 @@ import { Order } from "../order/order";
 
 export class Customer {
     customerId?: string;
+    email?: string;
+    phone?: number;
     username?: string;
     password?: string;
     firstName?: string;

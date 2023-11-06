@@ -3,6 +3,10 @@ a {
     padding-right: 10px;
 }
 
+.navbar {
+    background-color: #ff0000;
+}
+
 .nav-item {
     color: white;
 }
