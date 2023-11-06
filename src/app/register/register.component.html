@@ -1,0 +1,63 @@
+<form #register="ngForm" class="registerForm" (ngSubmit)="onSubmit(register.value)">
+    <h1 class="title">Sign Up</h1>
+    <div class="form-group">
+        <label for="firstName">First Name
+            <span style="color: #ff0000" *ngIf="!register.value.firstName">*</span></label>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="John" ngModel required
+            minlength="4" />
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name
+            <span style="color: #ff0000" *ngIf="!register.value.lastName">*</span></label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Doe" ngModel />
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" name="description"
+            placeholder="Ex. I love to play soccer when I am not baking away!" ngModel />
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address"
+            placeholder="Ex. 402 Northwestern Ave, West lafayette, IN" ngModel />
+    </div>
+    <div class="form-group">
+        <label for="pincode">Pincode
+            <span style="color: #ff0000" *ngIf="!register.value.pincode">*</span></label>
+        <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Ex. 47906" ngModel />
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone
+            <span style="color: #ff0000" *ngIf="!register.value.phone">*</span></label>
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="7657726727" ngModel />
+    </div>
+    <div class="form-group">
+        <label for="email">Email
+            <span style="color: #ff0000" *ngIf="!register.value.email">*</span></label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Ex. john.doe@gmail.com" ngModel
+            required />
+    </div>
+    <div class="form-group">
+        <label for="username">Username
+            <span style="color: #ff0000" *ngIf="!register.value.username">*</span></label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Ex. johndoe" ngModel
+            required />
+    </div>
+    <div class="form-group">
+        <label for="password">Password
+            <span style="color: #ff0000" *ngIf="!register.value.password">*</span></label>
+        <input type="password" class="form-control" id="current-password" name="password" placeholder="Password"
+            ngModel />
+    </div>
+    <div class="form-group">
+        <label for="repeat-password">Confirm Password (must match)
+            <span style="color: #ff0000" *ngIf="!repeatPassword">*</span></label>
+        <input type="password" class="form-control" name="repeat-password" id="repeat-password"
+            placeholder="Repeat Password" [(ngModel)]="repeatPassword" />
+    </div>
+    <div class="form-group">
+        <label class="alert-danger" *ngIf="!canSubmit(register.value)"><span style="color: #ff0000">*</span>All fields
+            are compulsory</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!canEnableSubmit(register.value)">Submit</button>
+</form>
