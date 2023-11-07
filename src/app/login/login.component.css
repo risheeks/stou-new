@@ -1,0 +1,14 @@
+.loginForm{
+    margin: 0 20% 0 20%;
+    padding: 2% 10% 3% 10%;
+    background-image: url('../../assets/images/home-background2.jpg');
+}
+
+.title {
+    text-align: center;
+    color: #ff0000;
+}
+
+.form-group {
+    padding: 5px;
+}
