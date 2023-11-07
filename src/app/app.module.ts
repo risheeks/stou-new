@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FeaturedCooksComponent } from './featured-cooks/featured-cooks.component';
 import { CookSquareComponent } from './cook-square/cook-square.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
@@ -30,7 +30,8 @@ import { RouterModule } from '@angular/router';
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent}
     ]),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
