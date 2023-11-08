@@ -17,7 +17,9 @@ export class HeaderComponent {
   }
 
   openRegisterDialog() {
-    const dialogRef = this.dialog.open(RegisterComponent);
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      width:'40%'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -25,7 +27,9 @@ export class HeaderComponent {
   }
 
   openLoginDialog() {
-    const dialogRef = this.dialog.open(LoginComponent);
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width:'40%'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
