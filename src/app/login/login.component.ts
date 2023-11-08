@@ -23,9 +23,11 @@ export class LoginComponent {
     if(!this.login.valid) {
       alert('Please enter BOTH username and password');
       return;
+    } else {
+      alert('Logged In\nUser: ' + this.login.value.username);
+      this.login.reset();
+      return true;
     }
-    alert('Logged In\nUser: ' + this.login.value.username);
-    this.login.reset();
     // console.log('Valid?', this.login.valid); // true or false
     // console.log('Username', this.login.value.username);
     // console.log('Password', this.login.value.password);
