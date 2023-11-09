@@ -6,6 +6,7 @@ export class Cook {
     firstName?: string;
     lastName?: string;
     description?: string;
+    image?: string;
     address?: string;
     pincode?: number;
     rating?: number;
