@@ -10,7 +10,7 @@ export class Cook {
     address?: string;
     pincode?: number;
     rating?: number;
-    phone?: number;
+    phone?: string;
     email?: string;
     username?: string;
     password?: string;

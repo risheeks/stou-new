@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cook } from '../model/cook/cook';
+import * as sampleCook from '../../assets/test-data/cook1.json';
+
 
 @Component({
   selector: 'app-profile',
@@ -9,28 +11,39 @@ import { Cook } from '../model/cook/cook';
 })
 export class ProfileComponent {
 
-  login!: FormGroup;
+  profile!: FormGroup;
   cook: Cook = new Cook();
 
   ngOnInit() {
-    this.login = new FormGroup({
-      username: new FormControl(this.cook.username, Validators.required),
-      password: new FormControl(this.cook.password, Validators.required)
+    this.initSampleCook();
+    this.profile = new FormGroup({
+      image: new FormControl(this.cook.image),
+      firstName: new FormControl({value: this.cook.firstName, disabled: true}, Validators.required),
+      lastName: new FormControl({value: this.cook.lastName, disabled: true}, Validators.required),
+      description: new FormControl(this.cook.description),
+      address: new FormControl(this.cook.address),
+      pincode: new FormControl(this.cook.pincode, [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+      phone: new FormControl(this.cook.phone, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+      email: new FormControl(this.cook.email, [Validators.required, Validators.email]),
+      username: new FormControl({value: this.cook.username, disabled: true}, Validators.required)
     });
+    
   }
 
-  onSubmit(form: FormGroup) {
+  initSampleCook = () => {
+    this.cook = sampleCook as Cook;
+  }
 
-    if(!this.login.valid) {
-      alert('Please enter BOTH username and password');
-      return;
-    } else {
-      alert('Logged In\nUser: ' + this.login.value.username);
-      this.login.reset();
-      return true;
-    }
-    // console.log('Valid?', this.login.valid); // true or false
-    // console.log('Username', this.login.value.username);
-    // console.log('Password', this.login.value.password);
+  processFile(imageInput: HTMLInputElement) {
+    console.log('image upload');
+    console.log(imageInput.files ? imageInput.files[0].name : null);
+  }
+
+  onSubmit() {
+    // var json = JSON.stringify(this.cook);
+    // var fs = require('fs');
+    // fs.writeFile('myjsonfile.json', json, 'utf8');
+
+    console.log(this.profile.dirty);
   }
 }
