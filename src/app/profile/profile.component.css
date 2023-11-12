@@ -1,0 +1,18 @@
+.profile-form {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 1%;
+}
+
+.title {
+    text-align: center;
+    color: #ff0000;
+}
+
+.form-group {
+    padding: 5px;
+}
+
+.border {
+    padding: 3% 10% 3% 10%;
+}

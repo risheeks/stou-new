@@ -1,0 +1,52 @@
+<form class="profile-form" [formGroup]="profile" (ngSubmit)="onSubmit()">
+    <h1 class="title">Profile</h1>
+    <div class="border">
+        <div class="form-group">
+            <label for="image"> Image </label><br />
+            <input class="form-control" formControlName="image" name="image" type="file" (ngModelChange)="processFile()"/>
+        </div>
+        <div class="form-group">
+            <label for="firstName"> First Name </label><br />
+            <input class="form-control" formControlName="firstName" placeholder="First Name" name="firstName" type="text"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName"> Last Name </label><br />
+            <input class="form-control" formControlName="lastName" placeholder="Last Name" name="lastName" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="username"> Username </label><br />
+            <input class="form-control" formControlName="username" placeholder="Username/Email" name="username"
+                type="text" />
+        </div>
+    </div>
+    <div class="border">
+        <div class="form-group">
+            <label for="description"> About me </label><br />
+            <input class="form-control" formControlName="description" placeholder="About me" name="description"
+                type="text" />
+        </div>
+        <div class="form-group">
+            <label for="address"> Address </label><br />
+            <textarea class="form-control" formControlName="address" placeholder="Address" name="address"
+                type="text"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pincode"> Pincode </label><br />
+            <input class="form-control" formControlName="pincode" name="pincode" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="phone"> Phone </label><br />
+            <input class="form-control" formControlName="phone" name="phone" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="email"> Email </label><br />
+            <input class="form-control" formControlName="email" name="email" type="text" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" mat-button cdkFocusInitial>
+                Save
+              </button>
+        </div>
+        
+    </div>
+</form>
