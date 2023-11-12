@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cook } from '../model/cook/cook';
 import * as sampleCook from '../../assets/test-data/cook1.json';
-
+import { CookService } from '../cook.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-profile',
@@ -11,11 +12,15 @@ import * as sampleCook from '../../assets/test-data/cook1.json';
 })
 export class ProfileComponent {
 
+  @Input() username!: string;
   profile!: FormGroup;
   cook: Cook = new Cook();
+  
+
+  constructor(private cookService: CookService) {}
 
   ngOnInit() {
-    this.initSampleCook();
+    this.initCook(this.username);
     this.profile = new FormGroup({
       image: new FormControl(this.cook.image),
       firstName: new FormControl({value: this.cook.firstName, disabled: true}, Validators.required),
@@ -30,20 +35,25 @@ export class ProfileComponent {
     
   }
 
-  initSampleCook = () => {
-    this.cook = sampleCook as Cook;
+  initCook = (username: string) => {
+    this.cook = this.cookService.getCook(username);
   }
 
-  processFile(imageInput: HTMLInputElement) {
-    console.log('image upload');
-    console.log(imageInput.files ? imageInput.files[0].name : null);
+  processFile() {
+    // console.log('image upload');
+    // console.log(imageInput.files ? imageInput.files[0].name : null);
+    console.log(this.profile.get('image')?.value);
   }
 
   onSubmit() {
-    // var json = JSON.stringify(this.cook);
-    // var fs = require('fs');
-    // fs.writeFile('myjsonfile.json', json, 'utf8');
-
+    const json = JSON.stringify(this.cook);
+    const blob = 
+        new Blob([
+                 json], 
+                 {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "JoeGoldberg.json");
+    
+    console.log(json);
     console.log(this.profile.dirty);
   }
 }
