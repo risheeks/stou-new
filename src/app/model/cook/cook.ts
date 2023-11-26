@@ -2,7 +2,7 @@ import { Item } from "../item/item";
 import { Order } from "../order/order";
 
 export class Cook {
-    cookId?: string;
+    username?: string;
     firstName?: string;
     lastName?: string;
     description?: string;
@@ -12,7 +12,6 @@ export class Cook {
     rating?: number;
     phone?: string;
     email?: string;
-    username?: string;
     password?: string;
     specialty?: Item[];
     status?: number;

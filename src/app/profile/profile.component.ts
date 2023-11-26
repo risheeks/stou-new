@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cook } from '../model/cook/cook';
-import * as sampleCook from '../../assets/test-data/cook1.json';
-import { CookService } from '../cook.service';
+import { CookService } from '../service/cook.service';
 import { saveAs } from 'file-saver';
 
 @Component({
@@ -36,7 +35,7 @@ export class ProfileComponent {
   }
 
   initCook = (username: string) => {
-    this.cook = this.cookService.getCook(username);
+    // this.cook = this.cookService.getCook(username);
   }
 
   processFile() {
