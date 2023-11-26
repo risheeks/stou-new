@@ -16,23 +16,5 @@ export class HeaderComponent {
     this.loggedIn = false;
   }
 
-  openRegisterDialog() {
-    const dialogRef = this.dialog.open(RegisterComponent, {
-      width:'40%'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  openLoginDialog() {
-    const dialogRef = this.dialog.open(LoginComponent, {
-      width:'40%'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  
 }

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Cook } from '../model/cook/cook';
+import { ToastrService } from 'ngx-toastr';
+import { CookService } from '../service/cook.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,24 +12,34 @@ import { Cook } from '../model/cook/cook';
 })
 export class LoginComponent {
   login!: FormGroup;
-  cook: Cook = new Cook();
+  cook: any;
+
+  constructor(private toastr: ToastrService, private cookService: CookService, private router: Router) {
+    sessionStorage.clear();
+  }
 
   ngOnInit() {
     this.login = new FormGroup({
-      username: new FormControl(this.cook.username, Validators.required),
-      password: new FormControl(this.cook.password, Validators.required)
+      username: new FormControl("", Validators.required),
+      password: new FormControl("", Validators.required)
     });
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit() {
 
-    if(!this.login.valid) {
-      alert('Please enter BOTH username and password');
-      return;
+    if(this.login.valid) {
+      this.cookService.getCookByUsername(this.login.value.username).subscribe((cook: any) => {
+        this.cook = cook[0];
+        if(this.cook.password == this.login.value.password) {
+          sessionStorage.setItem('username', this.cook.username);
+          sessionStorage.setItem('cook', this.cook);
+          this.router.navigate(['dashboard']);
+        } else {
+          this.toastr.error('Invalid Credentials');
+        }
+      })
     } else {
-      alert('Logged In\nUser: ' + this.login.value.username);
-      this.login.reset();
-      return true;
+      
     }
     // console.log('Valid?', this.login.valid); // true or false
     // console.log('Username', this.login.value.username);

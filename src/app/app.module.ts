@@ -12,10 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorComponent } from './error/error.component';
-import { CookService } from './cook.service';
+import { CookService } from './service/cook.service';
+import { MaterialModule } from './material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CookService } from './cook.service';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MaterialModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     CookService
