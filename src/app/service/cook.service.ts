@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cook } from '../model/cook/cook';
 import { Observable, of } from 'rxjs';
@@ -8,6 +8,7 @@ import { Observable, of } from 'rxjs';
 })
 export class CookService {
   apiurl='http://localhost:3000/cooks';
+  @Output() getIsLoggedIn: EventEmitter<any> = new EventEmitter();
   constructor(private http:HttpClient) { 
 
   }
@@ -31,7 +32,28 @@ export class CookService {
     //return of(new Cook());
   }
 
-  isLoggedIn() {
+  login(cook: any): Boolean {
+    if(sessionStorage.getItem('cook')!=null) {
+      return false;
+    } else {
+      sessionStorage.setItem('cook', cook);
+      this.getIsLoggedIn.emit(true);
+      return true;
+    }
+  }
+
+  logout(): Boolean {
+    if(sessionStorage.getItem('cook')==null) {
+      return false;
+    }
+    else {
+      sessionStorage.clear();
+      this.getIsLoggedIn.emit(false);
+      return true;
+    }
+  }
+
+  isLoggedIn():any {
     return sessionStorage.getItem('cook')!=null;
   }
 
