@@ -28,5 +28,6 @@ ng add @angular/material
 npm install ngx-toastr
 npm install -g json-server
 npx json-server --watch db.json
+json-server --watch db.json
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
