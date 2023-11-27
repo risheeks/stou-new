@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cook } from '../model/cook/cook';
 import { CookService } from '../service/cook.service';
 import { saveAs } from 'file-saver';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -11,15 +12,15 @@ import { saveAs } from 'file-saver';
 })
 export class ProfileComponent {
 
-  @Input() username!: string;
   profile!: FormGroup;
-  cook: Cook = new Cook();
+  cook!: any;
   
 
-  constructor(private cookService: CookService) {}
+  constructor(private cookService: CookService, private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.initCook(this.username);
+    this.cookService.getLoggedInCook().subscribe((cook: any) => this.cook = cook);
+    console.log(this.cook.username as String);
     this.profile = new FormGroup({
       image: new FormControl(this.cook.image),
       firstName: new FormControl({value: this.cook.firstName, disabled: true}, Validators.required),
@@ -34,10 +35,6 @@ export class ProfileComponent {
     
   }
 
-  initCook = (username: string) => {
-    // this.cook = this.cookService.getCook(username);
-  }
-
   processFile() {
     // console.log('image upload');
     // console.log(imageInput.files ? imageInput.files[0].name : null);
@@ -45,14 +42,6 @@ export class ProfileComponent {
   }
 
   onSubmit() {
-    const json = JSON.stringify(this.cook);
-    const blob = 
-        new Blob([
-                 json], 
-                 {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "JoeGoldberg.json");
     
-    console.log(json);
-    console.log(this.profile.dirty);
   }
 }
