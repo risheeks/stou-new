@@ -20,7 +20,7 @@ export class ProfileComponent {
 
   ngOnInit() {
     this.cookService.getLoggedInCook().subscribe((cook: any) => this.cook = cook);
-    console.log(this.cook.username as String);
+    console.log(this.cook.username);
     this.profile = new FormGroup({
       image: new FormControl(this.cook.image),
       firstName: new FormControl({value: this.cook.firstName, disabled: true}, Validators.required),
