@@ -13,29 +13,19 @@ export class CookService {
 
   }
 
-  // getCook = (username: string): Cook => {
-  //   return sampleCook1 as Cook;
-  // }
-
-  // getPassword = (username: string): string | undefined => {
-  //   let cook: Cook = sampleCook1 as Cook;
-  //   return cook.password;
-  // }
-
   registerUser(cook: any) {
-
     return this.http.post(this.apiurl,cook)
   }
 
   getCookByUsername (username: String): Observable<any> {
     return this.http.get(this.apiurl + '?username=' + username);
-    //return of(new Cook());
   }
 
   login(cook: any): Boolean {
     if(sessionStorage.getItem('cook')!=null) {
       return false;
     } else {
+      console.log(cook);
       sessionStorage.setItem('cook', cook);
       this.getIsLoggedIn.emit(true);
       return true;
@@ -55,6 +45,11 @@ export class CookService {
 
   isLoggedIn():any {
     return sessionStorage.getItem('cook')!=null;
+  }
+
+  getLoggedInCook(): Observable<any> {
+    console.log((sessionStorage.getItem('cook')as Cook).username);
+    return of(sessionStorage.getItem('cook'));
   }
 
 }
