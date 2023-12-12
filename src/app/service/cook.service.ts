@@ -47,9 +47,11 @@ export class CookService {
     return sessionStorage.getItem('cook')!=null;
   }
 
-  getLoggedInCook(): Observable<any> {
-    // console.log((sessionStorage.getItem('cook')as Cook).username);
-    return of(JSON.parse(sessionStorage.getItem('cook') || ""));
+  getLoggedInCook(): Cook|any {
+    if (sessionStorage.getItem('cook'))
+      return JSON.parse(sessionStorage.getItem('cook') || "");
+    else 
+      return "";
   }
 
 }

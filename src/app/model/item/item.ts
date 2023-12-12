@@ -1,4 +1,4 @@
-export class Item {
+export class Food {
     itemId?: string;
     name?: string;
     altName?: string;

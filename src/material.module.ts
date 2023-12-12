@@ -8,7 +8,8 @@ import {MatPaginatorModule} from "@angular/material/paginator"
 import {MatSortModule} from "@angular/material/sort"
 import {MatDialogModule} from "@angular/material/dialog"
 import {MatSelectModule} from "@angular/material/select"
-import {MatCheckboxModule} from "@angular/material/checkbox"
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatIconModule} from "@angular/material/icon"
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox"
         MatSortModule,
         MatDialogModule,
         MatSelectModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatIconModule
     ]
 })
 export class MaterialModule { }

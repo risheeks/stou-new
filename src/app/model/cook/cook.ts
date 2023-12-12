@@ -1,4 +1,4 @@
-import { Item } from "../item/item";
+import { Food } from "../item/item";
 import { Order } from "../order/order";
 
 export class Cook {
@@ -13,7 +13,7 @@ export class Cook {
     phone?: string;
     email?: string;
     password?: string;
-    specialty?: Item[];
+    specialty?: Food[];
     status?: number;
     orderHistory?: Order[];
 }
