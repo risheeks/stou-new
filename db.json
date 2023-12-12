@@ -51,5 +51,19 @@
       "orderHistory": [],
       "id": 3
     }
+  ],
+  "foods": [
+    {
+      "image": "",
+      "name": "test",
+      "description": "test",
+      "price": "1",
+      "calories": "1",
+      "cuisines": "test",
+      "allergens": "test",
+      "isActive": true,
+      "cook": "sid",
+      "id": 3
+    }
   ]
 }

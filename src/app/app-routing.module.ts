@@ -6,6 +6,7 @@ import { ErrorComponent } from './error/error.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewFoodFormComponent } from './new-food-form/new-food-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'newFood', component: NewFoodFormComponent},
   { path: '**', component: ErrorComponent },
 ];
 

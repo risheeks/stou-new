@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,9 +17,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { CookService } from './service/cook.service';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from '../material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { NewFoodFormComponent } from './new-food-form/new-food-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FoodService } from './service/food.service';
+import { CookFoodComponent } from './cook-food/cook-food.component';
+import { CookFoodListComponent } from './cook-food-list/cook-food-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +37,11 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    ErrorComponent
+    ErrorComponent,
+    DashboardComponent,
+    NewFoodFormComponent,
+    CookFoodComponent,
+    CookFoodListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +51,13 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
-    CookService
+    CookService,
+    FoodService
   ],
   bootstrap: [AppComponent]
 })

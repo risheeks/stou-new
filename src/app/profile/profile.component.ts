@@ -19,7 +19,7 @@ export class ProfileComponent {
   constructor(private cookService: CookService, private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.cookService.getLoggedInCook().subscribe((cook: any) => this.cook = cook);
+    this.cook = this.cookService.getLoggedInCook();
     console.log(this.cook.username);
     this.profile = new FormGroup({
       image: new FormControl(this.cook.image),

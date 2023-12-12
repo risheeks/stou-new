@@ -1,0 +1,45 @@
+<mat-card>
+    <h2>Add New Food</h2>
+  <mat-card-content>
+    <form class="example-form" [formGroup]="newFood" (ngSubmit)="onSubmit()">
+        <!-- <mat-form-field class="example-full-width">
+            <mat-label>Image</mat-label>
+            <input class="form-control" formControlName="image" type="file"/> 
+        </mat-form-field> -->
+        <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price"/>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Calories</mat-label>
+            <input matInput formControlName="calories" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Cuisine(s)</mat-label>
+            <input matInput formControlName="cuisines" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Allergens</mat-label>
+            <input matInput formControlName="allergens" />
+        </mat-form-field>
+        <!-- <mat-form-field floatLabel="always">
+          <mat-slide-toggle formControlName="isActive">Active Now</mat-slide-toggle>
+          <textarea matInput hidden></textarea>
+      </mat-form-field> -->
+
+      <div class="formButtons">
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+        &nbsp;
+        <a routerLink="/dashboard" mat-raised-button color="primary">Cancel</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

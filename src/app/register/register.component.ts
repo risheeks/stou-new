@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr'
-
-import { Cook } from '../model/cook/cook';
 import { CookService } from '../service/cook.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -13,8 +11,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent {
   
-  
-
   constructor(private cookService: CookService, private toastr: ToastrService, private router: Router, private builder: FormBuilder) { }
 
   register = this.builder.group({
@@ -32,7 +28,7 @@ export class RegisterComponent {
     specialty: this.builder.array([]),
     status: this.builder.control(0),
     orderHistory: this.builder.array([])
-  })
+  });
 
   onSubmit = () => {
     if (this.register.valid) {

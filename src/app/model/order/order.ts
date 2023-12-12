@@ -1,11 +1,11 @@
 import { Time } from "@angular/common";
-import { Item } from "../item/item";
+import { Food } from "../item/item";
 
 export class Order {
     orderId?: string;
     customerId?: string;
     cookId?: string;
-    listOfItems?: Item[];
+    listOfItems?: Food[];
     Time?: Time;
     Info?: string;  //customer facing
     notes?: string; //for Stou purposes only
