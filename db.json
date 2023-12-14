@@ -64,6 +64,30 @@
       "isActive": true,
       "cook": "sid",
       "id": 3
+    },
+    {
+      "image": "",
+      "name": "test2",
+      "description": "test2",
+      "price": "2",
+      "calories": "2",
+      "cuisines": "test2",
+      "allergens": "test2",
+      "isActive": true,
+      "cook": "sid",
+      "id": 4
+    },
+    {
+      "image": "",
+      "name": "Butter Chicken",
+      "description": "Succulent chicken swimming in a buttery, savory sauce",
+      "price": "20",
+      "calories": "1200",
+      "cuisines": "Indian",
+      "allergens": "N/A",
+      "isActive": true,
+      "cook": "sid",
+      "id": 5
     }
   ]
 }
