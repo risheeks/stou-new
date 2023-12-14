@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CookService } from '../service/cook.service';
+import { ToastrService } from 'ngx-toastr';
+import { FoodService } from '../service/food.service';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-cook-food',
@@ -6,5 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./cook-food.component.css']
 })
 export class CookFoodComponent {
+  @Input() food: any;
+  
+  constructor(private cookService: CookService, private foodService: FoodService, private toastr: ToastrService) {}
+
+  ngOnInit() {
+    console.log(this.food);
+  }
 
 }
