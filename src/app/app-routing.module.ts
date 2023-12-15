@@ -7,14 +7,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewFoodFormComponent } from './new-food-form/new-food-form.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'newFood', component: NewFoodFormComponent},
+  { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
+  { path: 'newFood', component: NewFoodFormComponent, canActivate:[AuthGuard]},
   { path: '**', component: ErrorComponent },
 ];
 
