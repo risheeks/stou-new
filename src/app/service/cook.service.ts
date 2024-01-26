@@ -7,18 +7,22 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class CookService {
-  apiurl='http://localhost:3000/cooks';
+  apiurl='http://localhost:8080/user';
   @Output() getIsLoggedIn: EventEmitter<any> = new EventEmitter();
   constructor(private http:HttpClient) { 
 
   }
 
   registerUser(cook: any) {
+    console.log(cook);
+    cook.role = {};
+    cook.role.roleId = 2;
     return this.http.post(this.apiurl,cook)
   }
 
   getCookByUsername (username: String): Observable<any> {
-    return this.http.get(this.apiurl + '?username=' + username);
+    // return this.http.get(this.apiurl + '?username=' + username);
+    return this.http.get(this.apiurl + '/' + username + '/2');
   }
 
   login(cook: any): Boolean {
@@ -44,6 +48,7 @@ export class CookService {
   }
 
   isLoggedIn():any {
+    // console.log(sessionStorage.getItem('cook'));
     return sessionStorage.getItem('cook')!=null;
   }
 

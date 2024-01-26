@@ -17,7 +17,7 @@ export class RegisterComponent {
     username: this.builder.control('', Validators.required),
     firstName: this.builder.control('', Validators.required),
     lastName: this.builder.control('', Validators.required),
-    description: this.builder.control(''),
+    aboutMe: this.builder.control(''),
     image: this.builder.control(''),
     address: this.builder.control(''),
     pincode: this.builder.control('', Validators.required),
@@ -32,7 +32,7 @@ export class RegisterComponent {
 
   onSubmit = () => {
     if (this.register.valid) {
-      this.cookService.registerUser(this.register.value).subscribe(result => {
+      this.cookService.registerUser(this.register.value).subscribe(() => {
         this.router.navigate(['login'])
       });
     } else {

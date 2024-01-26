@@ -29,9 +29,10 @@ export class LoginComponent {
 
     if(this.login.valid) {
       this.cookService.getCookByUsername(this.login.value.username).subscribe((cook: any) => {
-        this.cook = cook[0];
-        if(this.cook.password == this.login.value.password) {
-          this.cookService.login(this.cook);
+        // console.log(cook);
+        // this.cook = cook[0];
+        if(cook.password == this.login.value.password) {
+          this.cookService.login(cook);
           this.router.navigate(['dashboard']);
         } else {
           this.toastr.error('Invalid Credentials');
