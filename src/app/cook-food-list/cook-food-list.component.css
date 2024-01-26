@@ -1,8 +1,13 @@
 .cook-food-list {
-    margin-left: 10%;
+    margin-left: 5%;
     margin-right: 10%;
+    display:inline; 
+    height: 10%;
 }
 
 .cook-food {
+    /* float:; */
+    /* display: inline-block; */
+    height: 20%;
     width: 30%;
 }

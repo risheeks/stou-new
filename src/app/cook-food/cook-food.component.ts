@@ -15,7 +15,7 @@ export class CookFoodComponent {
   constructor(private cookService: CookService, private foodService: FoodService, private toastr: ToastrService) {}
 
   ngOnInit() {
-    console.log(this.food);
+    // console.log(this.food);
   }
 
 }
