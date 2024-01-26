@@ -14,11 +14,11 @@ export class RegisterComponent {
   constructor(private cookService: CookService, private toastr: ToastrService, private router: Router, private builder: FormBuilder) { }
 
   register = this.builder.group({
-    username: this.builder.control('', Validators.required),
+    // username: this.builder.control('', Validators.required),
     firstName: this.builder.control('', Validators.required),
     lastName: this.builder.control('', Validators.required),
     aboutMe: this.builder.control(''),
-    image: this.builder.control(''),
+    picture: this.builder.control(''),
     address: this.builder.control(''),
     pincode: this.builder.control('', Validators.required),
     rating: this.builder.control(''),
