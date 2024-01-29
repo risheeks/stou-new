@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cook } from '../model/cook/cook';
 import { Observable, of } from 'rxjs';
 
@@ -23,6 +23,17 @@ export class CookService {
   getCookByUsername (username: String): Observable<any> {
     // return this.http.get(this.apiurl + '?username=' + username);
     return this.http.get(this.apiurl + '/' + username + '/2');
+  }
+
+  authenticateLogin (cook: any): any {
+    // return this.http.get(this.apiurl + '?username=' + username);
+    cook.email = cook.username;
+    cook.role = {};
+    cook.role.roleId = 2;
+    cook.aboutMe = "lolz";
+    cook.address = "lolz address";
+    console.log(cook);
+    return this.http.post(this.apiurl + '/authenticate', cook);
   }
 
   login(cook: any): Boolean {
