@@ -28,18 +28,16 @@ export class LoginComponent {
   onSubmit() {
 
     if(this.login.valid) {
-      this.cookService.getCookByUsername(this.login.value.username).subscribe((cook: any) => {
-        // console.log(cook);
-        // this.cook = cook[0];
-        if(cook.password == this.login.value.password) {
-          this.cookService.login(cook);
+      this.cookService.authenticateLogin(this.login.value).subscribe((validLogin: boolean) => {
+        if(validLogin) {
+          this.cookService.login(this.cookService.getCookByUsername(this.login.value.username));
           this.router.navigate(['dashboard']);
         } else {
           this.toastr.error('Invalid Credentials');
         }
       })
     } else {
-      
+      this.toastr.error('Invalid Form');
     }
     // console.log('Valid?', this.login.valid); // true or false
     // console.log('Username', this.login.value.username);
