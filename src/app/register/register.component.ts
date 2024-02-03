@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr'
 import { CookService } from '../service/cook.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Cook } from '../model/cook/cook';
 
 @Component({
   selector: 'app-register',
@@ -14,15 +15,12 @@ export class RegisterComponent {
   constructor(private cookService: CookService, private toastr: ToastrService, private router: Router, private builder: FormBuilder) { }
 
   register = this.builder.group({
-    // username: this.builder.control('', Validators.required),
     firstName: this.builder.control('', Validators.required),
     lastName: this.builder.control('', Validators.required),
     aboutMe: this.builder.control(''),
     picture: this.builder.control(''),
     address: this.builder.control(''),
-    pincode: this.builder.control('', Validators.required),
     rating: this.builder.control(''),
-    phone: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
     password: this.builder.control('', Validators.compose([Validators.required])),
     specialty: this.builder.array([]),
@@ -31,8 +29,9 @@ export class RegisterComponent {
   });
 
   onSubmit = () => {
+    let cook: Cook = this.register.value as Cook;
     if (this.register.valid) {
-      this.cookService.registerUser(this.register.value).subscribe(() => {
+      this.cookService.registerUser(cook).subscribe(() => {
         this.router.navigate(['login'])
       });
     } else {

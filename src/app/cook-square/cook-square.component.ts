@@ -10,12 +10,12 @@ export class CookSquareComponent {
   sampleCook: Cook;
   
   constructor() {
-    this.sampleCook = new Cook();
+    this.sampleCook = {};
     this.sampleCook.firstName = 'Bob';
     this.sampleCook.lastName = 'Adams';
     this.sampleCook.address = 'N/A';
-    this.sampleCook.description = 'I am a passionate baker and love sharing my love for food and cooking with others.';
-    this.sampleCook.pincode = 602105;
+    this.sampleCook.aboutMe = 'I am a passionate baker and love sharing my love for food and cooking with others.';
+    this.sampleCook.numRatings = 20;
     this.sampleCook.rating = 5.0;
   }
   

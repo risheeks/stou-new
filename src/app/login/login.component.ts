@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   login!: FormGroup;
-  cook: any;
+  cook?: Cook;
 
   constructor(private toastr: ToastrService, private cookService: CookService, private router: Router) {
     sessionStorage.clear();
@@ -20,7 +20,7 @@ export class LoginComponent {
 
   ngOnInit() {
     this.login = new FormGroup({
-      username: new FormControl("", Validators.required),
+      email: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required)
     });
   }
@@ -28,10 +28,12 @@ export class LoginComponent {
   onSubmit() {
 
     if(this.login.valid) {
-      this.cookService.authenticateLogin(this.login.value).subscribe((validLogin: boolean) => {
+      this.cookService.authenticateLogin(this.login.value).subscribe((validLogin: Boolean) => {
         if(validLogin) {
-          this.cookService.login(this.cookService.getCookByUsername(this.login.value.username));
-          this.router.navigate(['dashboard']);
+          let cook = this.cookService.getCookByUsername(this.login.value.email).subscribe(cook => {
+            this.cookService.login(cook);
+            this.router.navigate(['dashboard']);
+          });
         } else {
           this.toastr.error('Invalid Credentials');
         }
@@ -39,8 +41,5 @@ export class LoginComponent {
     } else {
       this.toastr.error('Invalid Form');
     }
-    // console.log('Valid?', this.login.valid); // true or false
-    // console.log('Username', this.login.value.username);
-    // console.log('Password', this.login.value.password);
   }
 }
