@@ -1,19 +1,20 @@
-import { Food } from "../item/item";
-import { Order } from "../order/order";
 
-export class Cook {
-    username?: string;
+export class Role {
+    roleId: number = 2;
+    roleDesc?: String;
+}
+
+export interface Cook {
+    email?: string;
+    role?: Role;
+    picture?: string;
     firstName?: string;
     lastName?: string;
-    description?: string;
-    image?: string;
     address?: string;
-    pincode?: number;
+    aboutMe?: string;
     rating?: number;
-    phone?: string;
-    email?: string;
+    numRatings?: number;
+    banned?: Boolean;
     password?: string;
-    specialty?: Food[];
-    status?: number;
-    orderHistory?: Order[];
+    numViews?: number;
 }

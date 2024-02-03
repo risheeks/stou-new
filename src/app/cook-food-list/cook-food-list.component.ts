@@ -14,10 +14,9 @@ export class CookFoodListComponent {
   constructor(private cookService: CookService, private foodService: FoodService, private toastr: ToastrService) {}
 
   ngOnInit() {
-    let cook: String = this.cookService.getLoggedInCook().username;
+    let cook: String = this.cookService.getLoggedInCook().email as String;
     this.foodService.getFoodsByCook(cook).subscribe((foodsList: any)=> {
       this.foodList = foodsList;
-      // console.log(this.foodList);
     })
   }
 }

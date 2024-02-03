@@ -5,15 +5,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FoodService {
-  apiurl='http://localhost:3000/foods';
+  apiurl='http://localhost:8080/food';
   constructor(private http:HttpClient) { }
 
   addFood(food: any) {
+    console.log(food);
     return this.http.post(this.apiurl,food);
   }
 
-  getFoodsByCook(cook: String): any {
-    return this.http.get(this.apiurl + '?cook=' + cook);
+  getFoodsByCook(cookEmail: String): any {
+    return this.http.get(this.apiurl + "/email/" + cookEmail);
   }
 
 }

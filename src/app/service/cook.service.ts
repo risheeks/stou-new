@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Cook } from '../model/cook/cook';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Cook, Role } from '../model/cook/cook';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,35 +13,27 @@ export class CookService {
 
   }
 
-  registerUser(cook: any) {
-    console.log(cook);
-    cook.role = {};
-    cook.role.roleId = 2;
+  registerUser(cook: Cook) {
+    cook.role = new Role();
     return this.http.post(this.apiurl,cook)
   }
 
-  getCookByUsername (username: String): Observable<any> {
-    // return this.http.get(this.apiurl + '?username=' + username);
-    return this.http.get(this.apiurl + '/' + username + '/2');
+  getCookByUsername (email: String): Observable<Cook> {
+    return this.http.get(this.apiurl + '/' + email + '/2');
   }
 
-  authenticateLogin (cook: any): any {
-    // return this.http.get(this.apiurl + '?username=' + username);
-    cook.email = cook.username;
-    cook.role = {};
-    cook.role.roleId = 2;
-    cook.aboutMe = "lolz";
-    cook.address = "lolz address";
-    console.log(cook);
-    return this.http.post(this.apiurl + '/authenticate', cook);
+  authenticateLogin (cook: Cook): Observable<Boolean> {
+    cook.role = new Role();
+    return this.http.post<Boolean>(this.apiurl + '/authenticate', cook);
   }
 
-  login(cook: any): Boolean {
+  login(cook: Cook): Boolean {
     if(sessionStorage.getItem('cook')!=null) {
       return false;
     } else {
-      // console.log(cook);
       sessionStorage.setItem('cook', JSON.stringify(cook));
+      console.log("sessionStorage added:");
+      console.log(cook);
       this.getIsLoggedIn.emit(true);
       return true;
     }
@@ -58,16 +50,12 @@ export class CookService {
     }
   }
 
-  isLoggedIn():any {
-    // console.log(sessionStorage.getItem('cook'));
+  isLoggedIn(): Boolean {
     return sessionStorage.getItem('cook')!=null;
   }
 
-  getLoggedInCook(): Cook|any {
-    if (sessionStorage.getItem('cook'))
+  getLoggedInCook(): Cook {
       return JSON.parse(sessionStorage.getItem('cook') || "");
-    else 
-      return "";
   }
 
 }
