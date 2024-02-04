@@ -46,3 +46,12 @@
     background-color: #ff0000;
     color: white;
 }
+
+div {
+    margin: 20px;
+  }
+  
+  button {
+    padding: 10px;
+    cursor: pointer;
+  }

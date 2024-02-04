@@ -1,7 +1,12 @@
 <div class="food-square">
     <a >
         <img class="food-image" src="../../assets/images/sampleFoodImage.jpg">
-        <h6 class="food-name">{{food.name}}</h6>
+        <h6 class="food-name">{{food.title}}</h6>
         <p class="food-description">{{food.description}}</p>
+        <mat-checkbox class="example-margin"
+                  [checked]="getActive()"
+                  (change)="toggleActive($event.checked)">
+            Active
+        </mat-checkbox>
     </a>
 </div>
