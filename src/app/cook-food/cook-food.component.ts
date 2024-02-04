@@ -31,6 +31,7 @@ export class CookFoodComponent {
   toggleActive(active: boolean) {
     this.food.valid = active;
     this.foodService.updateFood(this.food).subscribe(food => {
+      this.food = food;
       this.toastr.success(this.food.title, "valid: " + this.food.valid);
     });
   }
