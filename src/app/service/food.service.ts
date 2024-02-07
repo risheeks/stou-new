@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Food } from '../model/food/food';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,7 @@ export class FoodService {
   apiurl='http://localhost:8080/food';
   constructor(private http:HttpClient) { }
 
-  addFood(food: any) {
+  addFood(food: Food) {
     console.log(food);
     return this.http.post(this.apiurl,food);
   }
@@ -21,6 +21,13 @@ export class FoodService {
 
   updateFood(food: Food): Observable<Food> {
     return this.http.put(this.apiurl, food);
+  }
+
+  deleteFood(food: Food, ee: EventEmitter<void>) {
+    this.http.delete(this.apiurl + "/" + food.foodId).subscribe((res)=> {
+      console.log("Food deleted");
+      ee.emit();
+    });
   }
 
 }

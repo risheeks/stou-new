@@ -1,12 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CookService } from '../service/cook.service';
 import { ToastrService } from 'ngx-toastr';
 import { FoodService } from '../service/food.service';
 import { Food } from '../model/food/food';
-import {
-  coerceBooleanProperty,
-  BooleanInput
-} from '@angular/cdk/coercion';
+import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-cook-food',
@@ -16,6 +13,7 @@ import {
 export class CookFoodComponent {
 
   @Input() food!: Food;
+  @Output() reloadFoods: EventEmitter<void> = new EventEmitter();
   
   constructor(private cookService: CookService, private foodService: FoodService, private toastr: ToastrService) {}
 
@@ -36,4 +34,12 @@ export class CookFoodComponent {
     });
   }
 
+  deleteFood(): void {
+    this.foodService.deleteFood(this.food, this.reloadFoods);
+    console.log("This should be AFTER the service log");
+    // this.reloadFoods.emit();
+    
+  }
+
 }
+ 
