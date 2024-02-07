@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CookService } from '../service/cook.service';
 import { FoodService } from '../service/food.service';
 import { ToastrService } from 'ngx-toastr';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-cook-food-list',
@@ -19,4 +20,14 @@ export class CookFoodListComponent {
       this.foodList = foodsList;
     })
   }
+
+  reloadFoods() {
+    console.log("Reloading Foods");
+    // delay(1000);
+    let cook: String = this.cookService.getLoggedInCook().email as String;
+    this.foodService.getFoodsByCook(cook).subscribe((foodsList: any)=> {
+      this.foodList = foodsList;
+    })
+  }
+
 }
