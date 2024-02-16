@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Food } from '../model/food/food';
+import { Food } from '../model/food';
 import { Observable } from 'rxjs';
 
 @Injectable({

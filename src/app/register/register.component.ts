@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr'
-import { CookService } from '../service/cook.service';
+import { CookService } from '../_service/cook.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Cook } from '../model/cook/cook';
+import { Cook } from '../model/cook';
 
 @Component({
   selector: 'app-register',
@@ -27,6 +27,10 @@ export class RegisterComponent {
     status: this.builder.control(0),
     orderHistory: this.builder.array([])
   });
+
+  onPictureSelect(event: any) {
+
+  }
 
   onSubmit = () => {
     let cook: Cook = this.register.value as Cook;

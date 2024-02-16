@@ -16,13 +16,13 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorComponent } from './error/error.component';
-import { CookService } from './service/cook.service';
+import { CookService } from './_service/cook.service';
 import { MaterialModule } from '../material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NewFoodFormComponent } from './new-food-form/new-food-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FoodService } from './service/food.service';
+import { FoodService } from './_service/food.service';
 import { CookFoodComponent } from './cook-food/cook-food.component';
 import { CookFoodListComponent } from './cook-food-list/cook-food-list.component';
 

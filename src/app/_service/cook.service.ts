@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Cook, Role } from '../model/cook/cook';
+import { Cook, Role } from '../model/cook';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class CookService {
 
   registerUser(cook: Cook) {
     cook.role = new Role();
+    console.log(cook);
     return this.http.post(this.apiurl,cook)
   }
 

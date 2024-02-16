@@ -1,3 +1,4 @@
+import { FileHandle } from "./file-handle.model";
 
 export class Role {
     roleId: number = 2;
@@ -7,7 +8,7 @@ export class Role {
 export interface Cook {
     email?: string;
     role?: Role;
-    picture?: string;
+    picture?: FileHandle;
     firstName?: string;
     lastName?: string;
     address?: string;
