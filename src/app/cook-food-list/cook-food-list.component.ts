@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CookService } from '../service/cook.service';
-import { FoodService } from '../service/food.service';
+import { CookService } from '../_service/cook.service';
+import { FoodService } from '../_service/food.service';
 import { ToastrService } from 'ngx-toastr';
 import { delay } from 'rxjs';
 

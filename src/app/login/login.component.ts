@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Cook } from '../model/cook/cook';
+import { Cook } from '../model/cook';
 import { ToastrService } from 'ngx-toastr';
-import { CookService } from '../service/cook.service';
+import { CookService } from '../_service/cook.service';
 import { Router } from '@angular/router';
 
 @Component({

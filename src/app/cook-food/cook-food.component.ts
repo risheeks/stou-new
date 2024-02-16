@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CookService } from '../service/cook.service';
+import { CookService } from '../_service/cook.service';
 import { ToastrService } from 'ngx-toastr';
-import { FoodService } from '../service/food.service';
-import { Food } from '../model/food/food';
+import { FoodService } from '../_service/food.service';
+import { Food } from '../model/food';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 @Component({

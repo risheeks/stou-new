@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Cook } from '../model/cook/cook';
+import { Cook } from '../model/cook';
 
 @Component({
   selector: 'app-cook-square',

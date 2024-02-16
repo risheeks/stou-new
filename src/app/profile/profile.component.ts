@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Cook } from '../model/cook/cook';
-import { CookService } from '../service/cook.service';
+import { Cook } from '../model/cook';
+import { CookService } from '../_service/cook.service';
 import { saveAs } from 'file-saver';
 import { ToastrService } from 'ngx-toastr';
 
@@ -22,7 +22,7 @@ export class ProfileComponent {
     this.cook = this.cookService.getLoggedInCook();
     console.log(this.cook.username);
     this.profile = new FormGroup({
-      image: new FormControl(this.cook.image),
+      picture: new FormControl(this.cook.picture),
       firstName: new FormControl({value: this.cook.firstName, disabled: true}, Validators.required),
       lastName: new FormControl({value: this.cook.lastName, disabled: true}, Validators.required),
       description: new FormControl(this.cook.description),

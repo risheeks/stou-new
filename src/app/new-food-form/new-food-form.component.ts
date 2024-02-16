@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CookService } from '../service/cook.service';
+import { CookService } from '../_service/cook.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-import { FoodService } from '../service/food.service';
-import { Cook } from '../model/cook/cook';
-import { Food } from '../model/food/food';
+import { FoodService } from '../_service/food.service';
+import { Cook } from '../model/cook';
+import { Food } from '../model/food';
 
 @Component({
   selector: 'app-new-food-form',

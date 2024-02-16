@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
-import { CookService } from '../service/cook.service';
+import { CookService } from '../_service/cook.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
