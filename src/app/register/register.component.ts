@@ -4,6 +4,7 @@ import { CookService } from '../_service/cook.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Cook } from '../model/cook';
+import { ContentObserver } from '@angular/cdk/observers';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,8 @@ import { Cook } from '../model/cook';
 })
 export class RegisterComponent {
   
+  // image!: File;
+
   constructor(private cookService: CookService, private toastr: ToastrService, private router: Router, private builder: FormBuilder) { }
 
   register = this.builder.group({
@@ -28,9 +31,11 @@ export class RegisterComponent {
     orderHistory: this.builder.array([])
   });
 
-  onPictureSelect(event: any) {
-
-  }
+  // onPictureSelect(event: any) {
+  //   console.log(event);
+  //   this.image = event.target.files[0];
+  //   console.log(this.image);
+  // }
 
   onSubmit = () => {
     let cook: Cook = this.register.value as Cook;
