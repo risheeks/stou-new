@@ -13,17 +13,26 @@ export class CookService {
 
   }
 
-  registerUser(cook: Cook) {
+  registerUser(cook: any) {
     cook.role = new Role();
-    console.log(cook);
+    cook.banned = false;
+    cook.numRatings = 0;
+    cook.numViews = 0;
+    cook.rating = 0;
     return this.http.post(this.apiurl,cook)
   }
+
+  // uploadImage(file: File) {
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+  //   return this.http.post(this.apiurl+'/image', formData);
+  // }
 
   getCookByUsername (email: String): Observable<Cook> {
     return this.http.get(this.apiurl + '/' + email + '/2');
   }
 
-  authenticateLogin (cook: Cook): Observable<Boolean> {
+  authenticateLogin (cook: any): Observable<Boolean> {
     cook.role = new Role();
     return this.http.post<Boolean>(this.apiurl + '/authenticate', cook);
   }
